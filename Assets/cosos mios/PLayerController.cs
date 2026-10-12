@@ -67,24 +67,29 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Collectible"))
         {
-            // Suma 1 al recolectar
+
             itemsRecolectados++;
 
-            // Actualiza el texto en pantalla inmediatamente
+
             ActualizarTextoUI();
 
-            // Hace desaparecer el objeto
-            Destroy(other.gameObject);
 
-            // Condición de victoria
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("portal"))
+        {
+
+
             if (itemsRecolectados >= totalItems && totalItems > 0)
             {
                 if (panelVictoria != null)
                 {
                     panelVictoria.SetActive(true);
+                    Debug.Log("¡Has ganado!");
                 }
             }
         }
+        
     }
 
     // Funcion que refresca el texto de la pantalla
@@ -103,4 +108,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
+
+ 
 }
